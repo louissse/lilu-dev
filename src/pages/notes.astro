@@ -5,8 +5,7 @@ import { Image } from "astro:assets";
 
 const allNotes = await getCollection("notes");
 const sortedNotes = allNotes.sort(
-  (a: (typeof allNotes)[number], b: (typeof allNotes)[number]) =>
-    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
+  (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
 );
 ---
 
@@ -19,7 +18,7 @@ const sortedNotes = allNotes.sort(
     <div class="container">
       <div class="mb-8 grid gap-8 md:grid-cols-2">
         {
-          sortedNotes.map((note: any) => {
+          sortedNotes.map((note) => {
             return (
               <div>
                 {note.data.image && (

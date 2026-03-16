@@ -1,27 +1,23 @@
 ---
-interface Variants {
-  red: string;
-  blue: string;
-  orange: string;
+interface Props {
+  class?: string;
+  variant?: "red" | "blue" | "orange";
+  [key: string]: unknown;
 }
 
 const {
   class: className = "",
   variant = "red",
   ...rest
-} = Astro.props as {
-  class?: string;
-  variant?: keyof Variants;
-  [key: string]: any;
-};
+} = Astro.props;
 
-const variants: Variants = {
+const variants = {
   red: "rgba(220,38,38,0.3)",
   blue: "rgba(29,78,216,0.3)",
   orange: "rgba(251,146,60,0.3)",
 };
 
-const stripeColor = variants[variant as keyof Variants] || variants.blue;
+const stripeColor = variants[variant] || variants.blue;
 ---
 
 <div

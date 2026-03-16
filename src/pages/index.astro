@@ -6,17 +6,14 @@ import { ArrowUpRight } from "@lucide/astro";
 import { MoveRight } from "@lucide/astro";
 import DiagonalDivider from "../components/ui/DiagonalDivider.astro";
 
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 import HeroImage from "../images/hero-image.jpg";
 import ProfileImage from "../images/profile.png";
 import { getCollection } from "astro:content";
 
 // Get the first two projects
 const allProjects = await getCollection("projects");
-const sortedProjects = allProjects.sort(
-  (a: (typeof allProjects)[number], b: (typeof allProjects)[number]) =>
-    a.data.order - b.data.order,
-);
+const sortedProjects = allProjects.sort((a, b) => a.data.order - b.data.order);
 const featuredProjects = sortedProjects.slice(0, 2);
 ---
 
@@ -60,7 +57,7 @@ const featuredProjects = sortedProjects.slice(0, 2);
 
       <div class="mb-8 grid gap-8 md:grid-cols-2">
         {
-          featuredProjects.map((project: any) => {
+          featuredProjects.map((project) => {
             return (
               <div>
                 {project.data.image && (

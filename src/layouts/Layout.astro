@@ -3,8 +3,14 @@ import "../styles/global.css";
 import Menu from "../components/Menu.astro";
 import Footer from "../components/Footer.astro";
 
+interface Props {
+  bgClass?: string;
+  title?: string;
+  description?: string;
+}
+
 const {
-  bgClass = "bg-oraange-50",
+  bgClass = "bg-orange-50",
   title = "lilu.dev",
   description = "Welcome to my portfolio website",
 } = Astro.props;

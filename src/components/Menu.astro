@@ -1,0 +1,193 @@
+---
+// Menu component for responsive navigation
+---
+
+<!-- Mobile menu button (visible only on mobile) -->
+<button
+  id="mobile-menu-button"
+  class="md:hidden fixed top-4 right-4 z-[60] p-3 transition-colors"
+  aria-label="Open menu"
+>
+  <!-- Two-line menu icon (default state) -->
+  <svg
+    id="menu-icon"
+    class="w-6 h-6 stroke-blue-900"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="2.5"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16"
+    ></path>
+  </svg>
+
+  <!-- X icon (hidden by default) -->
+  <svg
+    id="close-icon"
+    class="w-6 h-6 stroke-blue-900 hidden"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="2.5"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M6 18L18 6M6 6l12 12"></path>
+  </svg>
+</button>
+
+<!-- Mobile menu panel (slides in from bottom) -->
+<div
+  id="mobile-menu-panel"
+  class="md:hidden fixed top-0 left-0 right-0 h-full w-full bg-orange-50 z-50 transform translate-y-full transition-transform duration-300 ease-in-out"
+>
+  <!-- Mobile menu content -->
+  <nav class="pt-20 px-8">
+    <div class="mb-8">
+      <h1 class="text-3xl font-semibold text-gray-950 underline-offset-4">
+        <a class="no-underline hover:underline" href="/">lilu.dev</a>
+      </h1>
+    </div>
+
+    <ul class="">
+      <li>
+        <a
+          href="/"
+          class="block text-gray-950 font-medium no-underline text-xl hover:text-blue-700 hover:underline underline-offset-4 py-2 rounded-lg transition-colors"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          href="/about"
+          class="block text-gray-950 font-medium no-underline text-xl hover:text-blue-700 hover:underline underline-offset-4 py-2 rounded-lg transition-colors"
+          >About</a
+        >
+      </li>
+      <li>
+        <a
+          href="/services"
+          class="block text-gray-950 font-medium no-underline text-xl hover:text-blue-700 hover:underline underline-offset-4 py-2 rounded-lg transition-colors"
+          >Services</a
+        >
+      </li>
+      <li>
+        <a
+          href="/contact"
+          class="block text-gray-950 font-medium no-underline text-xl hover:text-blue-700 hover:underline underline-offset-4 py-2 rounded-lg transition-colors"
+          >Contact</a
+        >
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<!-- Desktop sidebar (visible only on desktop) -->
+<aside
+  class="pt-22 pl-16 hidden md:block fixed top-0 left-0 h-full w-72 bg-orange-50 z-30"
+>
+  <!-- Sidebar header -->
+  <div class="">
+    <h1 class="text-3xl font-semibold text-gray-950 underline-offset-4">
+      <a class="no-underline hover:underline" href="/">lilu.dev</a>
+    </h1>
+  </div>
+
+  <!-- Sidebar navigation -->
+  <nav class="pt-42">
+    <ul class="">
+      <li>
+        <a
+          href="/"
+          class="block font-medium no-underline text-xl hover:underline underline-offset-4 py-2 rounded-lg transition-colors"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          href="/about"
+          class="block font-medium no-underline text-xl hover:underline underline-offset-4 py-2 rounded-lg transition-colors"
+          >About</a
+        >
+      </li>
+      <li>
+        <a
+          href="/services"
+          class="block font-medium no-underline text-xl hover:underline underline-offset-4 py-2 rounded-lg transition-colors"
+          >Services</a
+        >
+      </li>
+      <li>
+        <a
+          href="/contact"
+          class="block font-medium no-underline text-xl hover:underline underline-offset-4 py-2 rounded-lg transition-colors"
+          >Contact</a
+        >
+      </li>
+    </ul>
+  </nav>
+</aside>
+
+<script>
+  // Mobile menu functionality
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenuPanel = document.getElementById("mobile-menu-panel");
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
+
+  let isMenuOpen = false;
+
+  function openMobileMenu() {
+    mobileMenuPanel?.classList.remove("translate-y-full");
+    mobileMenuPanel?.classList.add("translate-y-0");
+    isMenuOpen = true;
+
+    // Toggle icons
+    menuIcon?.classList.add("hidden");
+    closeIcon?.classList.remove("hidden");
+  }
+
+  function closeMobileMenu() {
+    mobileMenuPanel?.classList.add("translate-y-full");
+    mobileMenuPanel?.classList.remove("translate-y-0");
+    isMenuOpen = false;
+
+    // Toggle icons back
+    menuIcon?.classList.remove("hidden");
+    closeIcon?.classList.add("hidden");
+  }
+
+  function toggleMenu() {
+    if (isMenuOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  // Event listeners
+  mobileMenuButton?.addEventListener("click", toggleMenu);
+
+  // Close menu on escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeMobileMenu();
+    }
+  });
+
+  // Close mobile menu when clicking on nav links
+  const mobileNavLinks = document.querySelectorAll("#mobile-menu-panel a");
+  mobileNavLinks.forEach((link) => {
+    link.addEventListener("click", closeMobileMenu);
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (
+      isMenuOpen &&
+      !mobileMenuPanel?.contains(e.target as Node) &&
+      !mobileMenuButton?.contains(e.target as Node)
+    ) {
+      closeMobileMenu();
+    }
+  });
+</script>

@@ -1,0 +1,85 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/ui/Button.astro";
+
+import Image from "astro/components/Image.astro";
+import HeroImage from "../images/hero-image.jpg";
+import { getCollection } from "astro:content";
+
+// Get the first two projects
+const allProjects = await getCollection("projects");
+const sortedProjects = allProjects.sort(
+  (a: (typeof allProjects)[number], b: (typeof allProjects)[number]) =>
+    a.data.order - b.data.order,
+);
+const featuredProjects = sortedProjects.slice(0, 2);
+---
+
+<Layout bgClass="bg-orange-50">
+  <section id="hero" class="py-22">
+    <div class="container">
+      <h2 class="mb-8">Hi, there</h2>
+      <p
+        class="text-4xl/12 md:text-4xl/12 lg:text-5xl/16 xl:text-6xl/18 mb-8 font-semibold"
+      >
+        I'm Louise, a frontend developer who builds modern web applications with
+        Astro, React, and TypeScript.
+      </p>
+      <div class="flex gap-4 mb-22">
+        <Button text="View projects" />
+        <Button text="Contact me" variant="outline" />
+      </div>
+
+      <div class="flex justify-center">
+        <Image
+          src={HeroImage}
+          alt="Image of Louise waving at the camera, smiling, with a blurred background of an office"
+          class="rounded-lg"
+          width={600}
+        />
+      </div>
+    </div>
+  </section>
+  <section id="projects" class="py-22">
+    <div class="container">
+      <h2 class="mb-8">Projects</h2>
+      <p class="text-2xl/10 mb-8">
+        Here are some of the projects I've worked on recently. Click on any of
+        them to learn more about the technologies I used and the challenges I
+        faced.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {
+          featuredProjects.map((project: any) => {
+            return (
+              <div>
+                {project.data.image && (
+                  <div class="aspect-[4/3] w-full mb-6">
+                    <img
+                      src={project.data.image.url}
+                      alt={project.data.image.alt}
+                      class="w-full h-full object-cover rounded-xl group-hover:shadow-lg transition-shadow"
+                    />
+                  </div>
+                )}
+                <div class="flex flex-wrap gap-4 mb-1">
+                  {project.data.tags.map((tag: string) => (
+                    <span class="text-red-600 text-lg font-medium">{tag}</span>
+                  ))}
+                </div>
+                <div class="">
+                  <h3 class="text-2xl font-semibold mb-2">
+                    <a href={`/projects/${project.id}/`}>
+                      {project.data.title}
+                    </a>
+                  </h3>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

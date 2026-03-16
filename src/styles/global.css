@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/* Albert Sans Variable Fonts */
+@font-face {
+  font-family: "Albert Sans";
+  src: url("/fonts/AlbertSans-VariableFont_wght.ttf")
+    format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Albert Sans";
+  src: url("/fonts/AlbertSans-Italic-VariableFont_wght.ttf")
+    format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --font-albert: "Albert Sans", sans-serif;
+
+  /* Custom Orange Palette - based on #FEFBF6 */
+  --color-orange-50: #fefbf6;
+  --color-orange-100: #fdf8f1;
+  --color-orange-200: #fbf4e8;
+  --color-orange-300: #f8efdb;
+  --color-orange-400: #f4e8c8;
+  --color-orange-500: #efe0b1;
+  --color-orange-600: #e8d596;
+  --color-orange-700: #dfc775;
+  --color-orange-800: #d4b64f;
+  --color-orange-900: #c7a324;
+
+  /* Custom Blue Palette - based on #1B2535 */
+  --color-blue-50: #f4f6fb;
+  --color-blue-100: #e9edf5;
+  --color-blue-200: #cedae9;
+  --color-blue-300: #a3bbd6;
+  --color-blue-400: #7196bf;
+  --color-blue-500: #4f79a8;
+  --color-blue-600: #3d608c;
+  --color-blue-700: #324d72;
+  --color-blue-800: #2c4360;
+  --color-blue-900: #293951;
+  --color-blue-950: #1b2535;
+
+  --color-gray-50: #f8f9fa;
+  --color-gray-100: #e9ecef;
+  --color-gray-200: #dee2e6;
+  --color-gray-300: #ced4da;
+  --color-gray-400: #adb5bd;
+  --color-gray-500: #6c757d;
+  --color-gray-600: #495057;
+  --color-gray-700: #343a40;
+  --color-gray-800: #212529;
+  --color-gray-900: #1b2535;
+
+  /* Custom Red Palette - based on #EA4646 */
+  --color-red-50: #fef2f2;
+  --color-red-100: #fde8e8;
+  --color-red-200: #fbd5d5;
+  --color-red-300: #f8b4b4;
+  --color-red-400: #f38ba8;
+  --color-red-500: #ef4444;
+  --color-red-600: #ea4646;
+  --color-red-700: #dc2626;
+  --color-red-800: #b91c1c;
+  --color-red-900: #991b1b;
+}
+
+@layer base {
+  body {
+    @apply font-albert;
+  }
+
+  h1,
+  .h1 {
+    @apply text-4xl font-bold tracking-tight text-gray-950;
+  }
+
+  h2,
+  .h2 {
+    @apply text-2xl sm:text-3xl font-medium tracking-tight text-blue-700;
+  }
+
+  h3,
+  .h3 {
+    @apply text-2xl font-semibold text-gray-950;
+  }
+
+  p,
+  .p {
+    @apply text-base text-gray-950;
+  }
+
+  a,
+  .a {
+    @apply text-gray-950 hover:text-blue-800 hover:underline transition-colors duration-200 underline-offset-4 cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-16;
+  }
+}

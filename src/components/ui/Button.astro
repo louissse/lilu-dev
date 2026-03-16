@@ -1,0 +1,23 @@
+---
+const { text, href = "#", variant = "primary", ...rest } = Astro.props;
+
+type Variant = "primary" | "secondary" | "outline";
+const typedVariant: Variant = variant;
+
+const baseStyles =
+  "inline-flex items-center justify-center px-5 py-2 text-lg font-medium rounded-[25px] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2";
+
+const variants: Record<Variant, string> = {
+  primary: "bg-red-600 text-orange-50 hover:bg-red-700 focus:ring-blue-500",
+  secondary:
+    "bg-orange-200 text-blue-900 hover:bg-orange-300 focus:ring-orange-500",
+  outline:
+    "border-2 border-blue-900 text-blue-900 hover:border-blue-500 hover:text-blue-500 focus:ring-blue-500",
+};
+
+const buttonClasses = `${baseStyles} ${variants[typedVariant]}`;
+---
+
+<a href={href} class={buttonClasses} {...rest}>
+  {text}
+</a>

@@ -1,0 +1,40 @@
+---
+const {
+  text,
+  href = "#",
+  variant = "primary",
+  external = false,
+  iconPosition = "right",
+  ...rest
+} = Astro.props;
+
+type Variant = "primary" | "secondary" | "text";
+type IconPosition = "left" | "right";
+const typedVariant: Variant = variant;
+
+const baseStyles =
+  "inline-flex items-center transition-colors focus:outline-none";
+
+const buttonBaseStyles =
+  "no-underline justify-center px-5 py-2 text-lg font-medium rounded-[25px] focus:ring-2 focus:ring-offset-2";
+
+const variants: Record<Variant, string> = {
+  secondary: "gap-2 text-xl font-bold text-red-600 hover:underline",
+  primary: "gap-2 text-xl font-bold text-contrastblue hover:underline",
+  text: "gap-2 text-xl font-bold text-contrastblue hover:underline",
+};
+
+const linkClasses = `${baseStyles} ${variants[typedVariant]}`;
+const linkProps = external
+  ? {
+      target: "_blank",
+      rel: "noopener noreferrer",
+    }
+  : {};
+---
+
+<a href={href} class={linkClasses} {...linkProps} {...rest}>
+  {iconPosition === "left" && <slot />}
+  {text}
+  {iconPosition === "right" && <slot />}
+</a>

@@ -1,22 +1,21 @@
 ---
 order: 3
-title: Lamo
-subtitle: A modern web application
-live: "https://lamo.app"
-github: "https://github.com/example/lamo"
+title: Website for a local honey producer
+subtitle: An image-first website built with Astro for a small Trondheim-based honey producer, designed to foreground photography while keeping the frontend lightweight and easy to extend.
+live: "https://lamo-honning.netlify.app/"
+github: ""
 image:
-  url: "/images/placeholder.png"
+  url: "/images/lamo.png"
   alt: "Lamo project screenshot"
 tags: ["Astro", "TypeScript", "Tailwind CSS"]
 ---
 
-# Lamo Project
+This project started with a small family business in the heart of Trondheim. They care deeply about nature and beekeeping, running hives on rooftops around the city and selling their honey locally to restaurants.
 
-Lamo is a modern web application built with cutting-edge technologies. This project showcases clean design patterns and exceptional user experience.
+The website is meant to reflect that simplicity — a quiet, image-first space where the photography and the story of the bees take center stage.
 
-## Features
+The goal was to build something lightweight and reliable: a site that feels calm and focused, while remaining easy to extend as new products, collaborations, or locations are added.
 
-- Modern responsive design
-- Fast performance with Astro
-- Type-safe development with TypeScript
-- Beautiful styling with Tailwind CSS
+Technically, the site is built with Astro using a small set of reusable layout patterns and minimal styling. The structure stays deliberately shallow so the frontend remains predictable while letting the imagery carry most of the experience.
+
+The project is currently in progress, with the core structure in place and ongoing refinement driven by real content.

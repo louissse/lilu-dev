@@ -1,0 +1,32 @@
+---
+interface Variants {
+  red: string;
+  blue: string;
+  orange: string;
+}
+
+const {
+  class: className = "",
+  variant = "red",
+  ...rest
+} = Astro.props as {
+  class?: string;
+  variant?: keyof Variants;
+  [key: string]: any;
+};
+
+const variants: Variants = {
+  red: "rgba(220,38,38,0.3)",
+  blue: "rgba(29,78,216,0.3)",
+  orange: "rgba(251,146,60,0.3)",
+};
+
+const stripeColor = variants[variant as keyof Variants] || variants.blue;
+---
+
+<div
+  class={`h-[10px] w-full ${className}`}
+  style={`background-image: repeating-linear-gradient(-45deg, transparent, transparent 2px, ${stripeColor} 2px, ${stripeColor} 4px);`}
+  {...rest}
+>
+</div>

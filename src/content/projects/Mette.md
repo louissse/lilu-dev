@@ -1,22 +1,21 @@
 ---
 order: 2
-title: An elegant portfolio website for musician Mette Lethan
-subtitle: An elegant portfolio website
+title: Portfolio website for musician Mette Lethan
+subtitle: A fast, responsive portfolio site built to replace an outdated legacy website and make it easy to publish new projects and teaching work.
 live: "https://mettelethan.com/"
-github: "https://github.com/example/mette"
+github: ""
 image:
-  url: "/images/placeholder.png"
+  url: "/images/mette.png"
   alt: "Mette project screenshot"
-tags: ["Astro", "SanityCMS"]
+tags: ["Astro", "SanityCMS", "Tailwind"]
 ---
 
-# Mette Project
+Mette Lethan, a musician and teacher, had an old website built on a legacy framework that could no longer be updated and wasn't responsive.
 
-Mette is an elegant portfolio website that combines beautiful design with powerful functionality. Built with React and modern development tools.
+She needed a simple website where new projects could be added easily, but which otherwise wouldn't require much maintenance or attention.
 
-## Features
+The goal was to create something clean, reliable, and easy to update, while keeping the design focused on her music and teaching.
 
-- Interactive user interface
-- Data fetching with TanStack Query
-- Responsive design
-- TypeScript for better development experience
+The site was built with Astro and Tailwind, with Sanity CMS handling the content so new projects can be added without touching the code.
+
+The site is live and used as her main online presence.

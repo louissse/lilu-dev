@@ -1,9 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/ui/Button.astro";
+import ButtonLink from "../components/ui/ButtonLink.astro";
+import { ArrowUpRight } from "@lucide/astro";
+import { MoveRight } from "@lucide/astro";
+import DiagonalDivider from "../components/ui/DiagonalDivider.astro";
 
 import Image from "astro/components/Image.astro";
 import HeroImage from "../images/hero-image.jpg";
+import ProfileImage from "../images/profile.png";
 import { getCollection } from "astro:content";
 
 // Get the first two projects
@@ -16,18 +21,22 @@ const featuredProjects = sortedProjects.slice(0, 2);
 ---
 
 <Layout bgClass="bg-orange-50">
-  <section id="hero" class="py-22">
+  <section id="hero" class="pt-22 pb-16">
     <div class="container">
       <h2 class="mb-8">Hi, there</h2>
       <p
-        class="text-4xl/12 md:text-4xl/12 lg:text-5xl/16 xl:text-6xl/18 mb-8 font-semibold"
+        class="mb-8 text-4xl/12 font-semibold md:text-4xl/12 lg:text-5xl/16 xl:text-6xl/18"
       >
         I'm Louise, a frontend developer who builds modern web applications with
         Astro, React, and TypeScript.
       </p>
-      <div class="flex gap-4 mb-22">
-        <Button text="View projects" />
-        <Button text="Contact me" variant="outline" />
+      <div class="mb-22 flex gap-4">
+        <Button text="View projects" href="#projects" />
+        <Button
+          text="Contact me"
+          variant="outline"
+          href="mailto:louise@liludigital.dk"
+        />
       </div>
 
       <div class="flex justify-center">
@@ -38,38 +47,38 @@ const featuredProjects = sortedProjects.slice(0, 2);
           width={600}
         />
       </div>
+      <DiagonalDivider class="mt-16" />
     </div>
   </section>
-  <section id="projects" class="py-22">
+  <section id="projects" class="py-16">
     <div class="container">
       <h2 class="mb-8">Projects</h2>
-      <p class="text-2xl/10 mb-8">
+      <p class="mb-8 text-xl">
         Here are some of the projects I've worked on recently. Click on any of
-        them to learn more about the technologies I used and the challenges I
-        faced.
+        them to learn more.
       </p>
 
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="mb-8 grid gap-8 md:grid-cols-2">
         {
           featuredProjects.map((project: any) => {
             return (
               <div>
                 {project.data.image && (
-                  <div class="aspect-[4/3] w-full mb-6">
+                  <div class="mb-6 aspect-[4/3] w-full">
                     <img
                       src={project.data.image.url}
                       alt={project.data.image.alt}
-                      class="w-full h-full object-cover rounded-xl group-hover:shadow-lg transition-shadow"
+                      class="h-full w-full rounded-xl object-cover"
                     />
                   </div>
                 )}
-                <div class="flex flex-wrap gap-4 mb-1">
+                <div class="mb-1 flex flex-wrap gap-4">
                   {project.data.tags.map((tag: string) => (
-                    <span class="text-red-600 text-lg font-medium">{tag}</span>
+                    <span class="text-lg font-medium text-red-600">{tag}</span>
                   ))}
                 </div>
                 <div class="">
-                  <h3 class="text-2xl font-semibold mb-2">
+                  <h3 class="mb-2 text-2xl font-semibold">
                     <a href={`/projects/${project.id}/`}>
                       {project.data.title}
                     </a>
@@ -79,6 +88,93 @@ const featuredProjects = sortedProjects.slice(0, 2);
             );
           })
         }
+      </div>
+      <ButtonLink href="/projects" text="See all projects" variant="secondary">
+        <MoveRight class="h-5 w-5" />
+      </ButtonLink>
+      <DiagonalDivider class="mt-16" />
+    </div>
+  </section>
+  <section id="about" class="py-16">
+    <div class="container">
+      <h2 class="mb-8">About me</h2>
+      <div class="flex justify-between gap-8">
+        <Image
+          src={ProfileImage}
+          alt="Image of Louise waving at the camera, smiling, with a blurred background of an office"
+          class="rounded-xl object-cover"
+          width={400}
+        />
+        <div>
+          <p class="mb-8 text-xl">
+            I'm a frontend developer building with Astro, React, and TypeScript.
+          </p>
+          <p class="mb-8 text-xl">
+            After starting my career as a developer, I spent several years in
+            product and team leadership roles. I'm now back to what I enjoy
+            most: building things in code.
+          </p>
+          <p class="mb-8 text-xl">
+            My background is in physics and education, and I care about creating
+            technology that's useful, understandable, and genuinely friendly to
+            people.
+          </p>
+
+          <div class="mb-8">
+            <h3 class="mb-2 text-xl font-semibold">Technologies I work with</h3>
+            <ul class="flex flex-wrap gap-x-6 gap-y-1 text-lg">
+              <li class="flex items-center">
+                <a
+                  href="https://astro.build/"
+                  target="_blank"
+                  rel="noopener noreferrer">Astro</a
+                >
+                <span><ArrowUpRight class="h-5 w-5" /></span>
+              </li>
+              <li class="flex items-center">
+                <a
+                  href="https://reactjs.org/"
+                  target="_blank"
+                  rel="noopener noreferrer">React</a
+                >
+                <span><ArrowUpRight class="h-5 w-5" /></span>
+              </li>
+              <li class="flex items-center">
+                <a
+                  href="https://www.typescriptlang.org/"
+                  target="_blank"
+                  rel="noopener noreferrer">TypeScript</a
+                >
+                <span><ArrowUpRight class="h-5 w-5" /></span>
+              </li>
+              <li class="flex items-center">
+                <a
+                  href="https://tailwindcss.com"
+                  target="_blank"
+                  rel="noopener noreferrer">Tailwind CSS</a
+                >
+                <span><ArrowUpRight class="h-5 w-5" /></span>
+              </li>
+              <li class="flex items-center">
+                <a
+                  href="https://tanstack.com/query"
+                  target="_blank"
+                  rel="noopener noreferrer">TanStack Query</a
+                >
+                <span><ArrowUpRight class="h-5 w-5" /></span>
+              </li>
+            </ul>
+          </div>
+
+          <ButtonLink
+            href="/assets/CV-louise-hopfner-dansk.pdf"
+            text="Get my resume"
+            variant="text"
+            external
+          >
+            <ArrowUpRight class="h-6 w-6" />
+          </ButtonLink>
+        </div>
       </div>
     </div>
   </section>

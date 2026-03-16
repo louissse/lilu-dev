@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+const allNotes = await getCollection("notes");
+const sortedNotes = allNotes.sort(
+  (a: (typeof allNotes)[number], b: (typeof allNotes)[number]) =>
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
+);
+---
+
+<Layout
+  title="Notes"
+  description="Thoughts, insights, and learnings from my journey in technology and design."
+  bgClass="bg-orange-50"
+>
+  <section class="py-22">
+    <div class="container">
+      <div class="mb-8 grid gap-8 md:grid-cols-2">
+        {
+          sortedNotes.map((note: any) => {
+            return (
+              <div>
+                {note.data.image && (
+                  <div class="mb-6 aspect-[4/3] w-full">
+                    <Image
+                      src={note.data.image.url}
+                      alt={note.data.image.alt}
+                      width={800}
+                      height={600}
+                      class="h-full w-full rounded-xl object-cover"
+                    />
+                  </div>
+                )}
+                <div class="text-contrastblue text-lg font-medium">
+                  {new Date(note.data.pubDate).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </div>
+
+                <div class="">
+                  <h3 class="mb-2 text-2xl font-semibold">
+                    <a href={`/notes/${note.id}/`}>{note.data.title}</a>
+                  </h3>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section></Layout
+>

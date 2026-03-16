@@ -1,9 +1,10 @@
 ---
 import "../styles/global.css";
 import Menu from "../components/Menu.astro";
+import Footer from "../components/Footer.astro";
 
 const {
-  bgClass = "bg-white",
+  bgClass = "bg-oraange-50",
   title = "lilu.dev",
   description = "Welcome to my portfolio website",
 } = Astro.props;
@@ -12,7 +13,7 @@ const {
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -34,13 +35,14 @@ const {
       crossorigin
     />
   </head>
-  <body class={bgClass}>
+  <body class="bg-orange-50">
     <!-- Navigation Menu -->
     <Menu />
 
     <!-- Main content area -->
-    <main class="md:ml-72 min-h-screen">
+    <main class={`min-h-screen md:ml-72 ${bgClass}`}>
       <slot />
     </main>
+    <Footer />
   </body>
 </html>

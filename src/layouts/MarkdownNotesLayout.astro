@@ -1,0 +1,99 @@
+---
+import DiagonalDivider from "../components/ui/DiagonalDivider.astro";
+import Layout from "./Layout.astro";
+import { Image } from "astro:assets";
+import { MoveLeft } from "@lucide/astro";
+import ButtonLink from "../components/ui/ButtonLink.astro";
+
+export interface Props {
+  frontmatter: {
+    title: string;
+    author: string;
+    description: string;
+    pubDate: Date;
+    image?: {
+      url: string;
+      alt: string;
+    };
+    tags: string[];
+  };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <article class="py-22">
+    <div class="container max-w-4xl">
+      <!-- Note Header -->
+      <div class="mb-6">
+        <div class="mb-4 text-sm text-gray-600">
+          {
+            new Date(frontmatter.pubDate).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          } • {frontmatter.author}
+        </div>
+
+        <h1 class="mb-4 text-4xl font-bold md:text-5xl/tight">
+          {frontmatter.title}
+        </h1>
+
+        <p class="mb-6 text-xl text-gray-600">
+          {frontmatter.description}
+        </p>
+
+        <!-- Note Image -->
+        {
+          frontmatter.image && (
+            <div class="mb-6">
+              <Image
+                src={frontmatter.image.url}
+                alt={frontmatter.image.alt}
+                width={800}
+                height={450}
+                class="w-full rounded-lg"
+              />
+            </div>
+          )
+        }
+
+        <!-- Tags -->
+        <div class="mb-8 flex flex-wrap gap-4">
+          {
+            frontmatter.tags.map((tag: string) => (
+              <span class="text-lg font-medium text-blue-600">{tag}</span>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <DiagonalDivider class="mb-8" variant="blue" />
+
+      <!-- Note Content -->
+      <div
+        class="prose prose-lg font-albert prose-headings:text-gray-950 prose-headings:font-semibold prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8 prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-8 prose-h2:text-blue-900 prose-h3:text-xl prose-h3:mb-3 prose-h3:mt-6 prose-h3:text-blue-800 prose-p:text-gray-950 prose-p:leading-relaxed prose-p:mb-4 prose-a:text-blue-700 prose-a:no-underline prose-a:font-medium prose-a:hover:underline prose-a:hover:text-blue-900 prose-strong:text-gray-950 prose-strong:font-semibold prose-em:text-blue-700 prose-em:italic prose-ul:my-4 prose-li:my-1 prose-li:text-blue-800 prose-ol:my-4 prose-ol:text-blue-800 prose-blockquote:border-l-4 prose-blockquote:border-blue-300 prose-blockquote:bg-blue-50 prose-blockquote:p-4 prose-blockquote:my-6 prose-blockquote:text-blue-700 prose-blockquote:italic prose-code:text-blue-800 prose-code:bg-blue-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:font-mono prose-code:text-sm prose-pre:bg-blue-50 prose-pre:border prose-pre:border-blue-200 prose-pre:p-4 prose-pre:rounded-lg mb-6 max-w-none"
+      >
+        <slot />
+      </div>
+
+      <!-- Divider -->
+      <DiagonalDivider class="mb-8" variant="blue" />
+
+      <!-- Back to Notes -->
+      <div class="mt-12 flex items-center gap-4">
+        <ButtonLink
+          href="/notes"
+          variant="primary"
+          text="Back to all notes"
+          iconPosition="left"
+        >
+          <MoveLeft class="h-5 w-5" />
+        </ButtonLink>
+      </div>
+    </div>
+  </article>
+</Layout>

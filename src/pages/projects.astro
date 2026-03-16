@@ -1,0 +1,52 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects");
+const sortedProjects = allProjects.sort(
+  (a: (typeof allProjects)[number], b: (typeof allProjects)[number]) =>
+    a.data.order - b.data.order,
+);
+---
+
+<Layout
+  title="Projects"
+  description="Learn more about my projects, my background, and my approach to building technology."
+  bgClass="bg-orange-50"
+>
+  <section class="py-22">
+    <div class="container">
+      <div class="mb-8 grid gap-8 md:grid-cols-2">
+        {
+          sortedProjects.map((project: any) => {
+            return (
+              <div>
+                {project.data.image && (
+                  <div class="mb-6 aspect-[4/3] w-full">
+                    <img
+                      src={project.data.image.url}
+                      alt={project.data.image.alt}
+                      class="h-full w-full rounded-xl object-cover"
+                    />
+                  </div>
+                )}
+                <div class="mb-1 flex flex-wrap gap-4">
+                  {project.data.tags.map((tag: string) => (
+                    <span class="text-lg font-medium text-red-600">{tag}</span>
+                  ))}
+                </div>
+                <div class="">
+                  <h3 class="mb-2 text-2xl font-semibold">
+                    <a href={`/projects/${project.id}/`}>
+                      {project.data.title}
+                    </a>
+                  </h3>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section></Layout
+>

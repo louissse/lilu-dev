@@ -42,6 +42,9 @@ const featuredProjects = sortedProjects.slice(0, 2);
           alt="Image of Louise waving at the camera, smiling, with a blurred background of an office"
           class="rounded-lg"
           width={600}
+          height={400}
+          format="webp"
+          loading="eager"
         />
       </div>
       <DiagonalDivider class="mt-16" />
@@ -62,9 +65,13 @@ const featuredProjects = sortedProjects.slice(0, 2);
               <div>
                 {project.data.image && (
                   <div class="mb-6 aspect-[4/3] w-full">
-                    <img
-                      src={project.data.image.url}
+                    <Image
+                      src={project.data.image.src}
                       alt={project.data.image.alt}
+                      width={600}
+                      height={450}
+                      format="webp"
+                      loading="lazy"
                       class="h-full w-full rounded-xl object-cover"
                     />
                   </div>
@@ -101,6 +108,8 @@ const featuredProjects = sortedProjects.slice(0, 2);
           alt="Image of Louise waving at the camera, smiling, with a blurred background of an office"
           class="rounded-xl object-cover"
           width={400}
+          format="webp"
+          loading="lazy"
         />
         <div>
           <p class="mb-8 text-xl">

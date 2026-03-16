@@ -4,7 +4,7 @@ title: From class components to hooks, clarity and trade-offs
 author: Louise Høpfner
 description: "Reflecting on the shift from React class components to function components, and the trade-offs between explicit lifecycle clarity and composability."
 image:
-  url: "/src/images/notes/react.jpg"
+  url: "/images/notes/react.jpg"
   alt: "#_"
 tags:
   - react

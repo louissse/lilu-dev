@@ -24,7 +24,7 @@ export interface Props {
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title={frontmatter.title} ogImage={frontmatter.image?.url}>
   <article class="pt-22 pb-16">
     <div class="container max-w-4xl">
       <!-- Project Header -->

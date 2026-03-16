@@ -18,7 +18,7 @@ const featuredProjects = sortedProjects.slice(0, 2);
 ---
 
 <Layout bgClass="bg-orange-50">
-  <section id="hero" class="pt-22 pb-16">
+  <section id="hero" class="pt-12 pb-8 md:pt-22 md:pb-16">
     <div class="container">
       <h2 class="mb-8">Hi, there</h2>
       <p
@@ -27,7 +27,7 @@ const featuredProjects = sortedProjects.slice(0, 2);
         I'm Louise, a frontend developer who builds modern web applications with
         Astro, React, and TypeScript.
       </p>
-      <div class="mb-22 flex gap-4">
+      <div class="mb-10 flex flex-wrap gap-4 md:mb-22">
         <Button text="View projects" href="#projects" />
         <Button
           text="Contact me"
@@ -50,7 +50,7 @@ const featuredProjects = sortedProjects.slice(0, 2);
       <DiagonalDivider class="mt-16" />
     </div>
   </section>
-  <section id="projects" class="py-16">
+  <section id="projects" class="py-8 md:py-16">
     <div class="container">
       <h2 class="mb-8">Projects</h2>
       <p class="mb-8 text-xl">
@@ -99,28 +99,28 @@ const featuredProjects = sortedProjects.slice(0, 2);
       <DiagonalDivider class="mt-16" />
     </div>
   </section>
-  <section id="about" class="py-16">
+  <section id="about" class="py-8 md:py-16">
     <div class="container">
       <h2 class="mb-8">About me</h2>
-      <div class="flex justify-between gap-8">
+      <div class="flex flex-col justify-between gap-8 lg:flex-row-reverse">
         <Image
           src={ProfileImage}
-          alt="Image of Louise waving at the camera, smiling, with a blurred background of an office"
-          class="rounded-xl object-cover"
+          alt="Image of Louise with a red background, smiling and looking at the camera"
+          class="mx-auto w-full max-w-sm self-start rounded-xl object-cover lg:mx-0 lg:w-[300px]"
           width={400}
           format="webp"
           loading="lazy"
         />
         <div>
-          <p class="mb-8 text-xl">
+          <p class="mb-6 text-xl">
             I'm a frontend developer building with Astro, React, and TypeScript.
           </p>
-          <p class="mb-8 text-xl">
+          <p class="mb-6 text-xl">
             After starting my career as a developer, I spent several years in
             product and team leadership roles. I'm now back to what I enjoy
             most: building things in code.
           </p>
-          <p class="mb-8 text-xl">
+          <p class="mb-6 text-xl">
             My background is in physics and education, and I care about creating
             technology that's useful, understandable, and genuinely friendly to
             people.

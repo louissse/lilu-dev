@@ -13,13 +13,15 @@ const {
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
 
-    <!-- Preload fonts for better performance -->
+    <!-- Preconnect to self for font files -->
+    <link rel="preconnect" href="/" />
+    <!-- Preload critical font (regular weight, non-italic covers most text) -->
     <link
       rel="preload"
       href="/fonts/AlbertSans-VariableFont_wght.ttf"
@@ -27,21 +29,26 @@ const {
       type="font/ttf"
       crossorigin
     />
-    <!-- Privacy-friendly analytics by Plausible -->
-    <script async src="https://plausible.io/js/pa-yf5tZrbBX1DFgm6x-xTw_.js"
-    ></script>
-    <script>
-      ((window.plausible =
+
+    <!-- Privacy-friendly analytics by Plausible — deferred until after page load -->
+    <script is:inline>
+      window.plausible =
         window.plausible ||
         function () {
-          (plausible.q = plausible.q || []).push(arguments);
-        }),
-        (plausible.init =
-          plausible.init ||
-          function (i) {
-            plausible.o = i || {};
-          }));
-      plausible.init();
+          (window.plausible.q = window.plausible.q || []).push(arguments);
+        };
+      window.plausible.init =
+        window.plausible.init ||
+        function (i) {
+          window.plausible.o = i || {};
+        };
+      window.plausible.init();
+      window.addEventListener("load", function () {
+        var s = document.createElement("script");
+        s.defer = true;
+        s.src = "https://plausible.io/js/pa-yf5tZrbBX1DFgm6x-xTw_.js";
+        document.head.appendChild(s);
+      });
     </script>
   </head>
   <body class="bg-orange-50">

@@ -1,7 +1,7 @@
 ---
 import DiagonalDivider from "../components/ui/DiagonalDivider.astro";
 import Layout from "./Layout.astro";
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import { MoveLeft } from "@lucide/astro";
 import ButtonLink from "../components/ui/ButtonLink.astro";
 
@@ -12,7 +12,7 @@ export interface Props {
     description: string;
     pubDate: Date;
     image?: {
-      url: string;
+      src: ImageMetadata;
       alt: string;
     };
     tags: string[];
@@ -20,9 +20,13 @@ export interface Props {
 }
 
 const { frontmatter } = Astro.props;
+
+const ogImage = frontmatter.image
+  ? (await getImage({ src: frontmatter.image.src, width: 1200 })).src
+  : undefined;
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title={frontmatter.title} ogImage={ogImage}>
   <article class="py-22">
     <div class="container max-w-4xl">
       <!-- Note Header -->
@@ -50,10 +54,12 @@ const { frontmatter } = Astro.props;
           frontmatter.image && (
             <div class="mb-6">
               <Image
-                src={frontmatter.image.url}
+                src={frontmatter.image.src}
                 alt={frontmatter.image.alt}
                 width={800}
                 height={450}
+                format="webp"
+                loading="lazy"
                 class="w-full rounded-lg"
               />
             </div>

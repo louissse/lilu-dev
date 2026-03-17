@@ -3,21 +3,47 @@ import "../styles/global.css";
 import Menu from "../components/Menu.astro";
 import Footer from "../components/Footer.astro";
 
+interface Props {
+  bgClass?: string;
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
 const {
-  bgClass = "bg-oraange-50",
+  bgClass = "bg-orange-50",
   title = "lilu.dev",
   description = "Welcome to my portfolio website",
+  ogImage = "/images/OGImage.png",
 } = Astro.props;
+
+const canonicalUrl = Astro.url.href;
+const ogImageUrl = new URL(ogImage, Astro.site).href;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
 
     <!-- Preconnect to self for font files -->
     <link rel="preconnect" href="/" />
@@ -29,34 +55,13 @@ const {
       type="font/ttf"
       crossorigin
     />
-
-    <!-- Privacy-friendly analytics by Plausible — deferred until after page load -->
-    <script is:inline>
-      window.plausible =
-        window.plausible ||
-        function () {
-          (window.plausible.q = window.plausible.q || []).push(arguments);
-        };
-      window.plausible.init =
-        window.plausible.init ||
-        function (i) {
-          window.plausible.o = i || {};
-        };
-      window.plausible.init();
-      window.addEventListener("load", function () {
-        var s = document.createElement("script");
-        s.defer = true;
-        s.src = "https://plausible.io/js/pa-yf5tZrbBX1DFgm6x-xTw_.js";
-        document.head.appendChild(s);
-      });
-    </script>
   </head>
   <body class="bg-orange-50">
     <!-- Navigation Menu -->
     <Menu />
 
     <!-- Main content area -->
-    <main class={`min-h-screen md:ml-72 ${bgClass}`}>
+    <main class={`min-h-screen lg:ml-72 ${bgClass}`}>
       <slot />
     </main>
     <Footer />

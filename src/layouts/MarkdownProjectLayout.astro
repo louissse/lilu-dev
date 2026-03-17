@@ -2,8 +2,7 @@
 import ButtonLink from "../components/ui/ButtonLink.astro";
 import DiagonalDivider from "../components/ui/DiagonalDivider.astro";
 import Layout from "./Layout.astro";
-import { Image } from "astro:assets";
-import type { ImageMetadata } from "astro";
+import { Image, getImage } from "astro:assets";
 import { ArrowUpRight } from "@lucide/astro";
 import { MoveLeft } from "@lucide/astro";
 import GithubIcon from "../components/icons/GithubIcon.astro";
@@ -23,9 +22,13 @@ export interface Props {
 }
 
 const { frontmatter } = Astro.props;
+
+const ogImage = frontmatter.image
+  ? (await getImage({ src: frontmatter.image.src, width: 1200 })).src
+  : undefined;
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title={frontmatter.title} ogImage={ogImage}>
   <article class="pt-22 pb-16">
     <div class="container max-w-4xl">
       <!-- Project Header -->
@@ -43,9 +46,12 @@ const { frontmatter } = Astro.props;
             <div class="ratio-4/3 mb-2 flex w-full flex-row gap-4">
               <Image
                 src={frontmatter.image.src}
+                src={frontmatter.image.src}
                 alt={frontmatter.image.alt}
                 width={600}
                 height={450}
+                format="webp"
+                loading="lazy"
                 class="w-2/3 rounded-lg"
               />
               <div class="mb-8 flex flex-col">

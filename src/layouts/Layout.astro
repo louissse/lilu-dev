@@ -26,7 +26,6 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
 
@@ -46,7 +45,9 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
 
-    <!-- Preload fonts for better performance -->
+    <!-- Preconnect to self for font files -->
+    <link rel="preconnect" href="/" />
+    <!-- Preload critical font (regular weight, non-italic covers most text) -->
     <link
       rel="preload"
       href="/fonts/AlbertSans-VariableFont_wght.ttf"

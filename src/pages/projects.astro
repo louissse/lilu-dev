@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 const allProjects = await getCollection("projects");
@@ -23,10 +24,13 @@ const sortedProjects = allProjects.sort(
               <div>
                 {project.data.image && (
                   <div class="mb-6 aspect-[4/3] w-full">
-                    <img
-                      src={project.data.image.url}
+                    <Image
+                      src={project.data.image.src}
                       alt={project.data.image.alt}
+                      width={800}
+                      height={600}
                       class="h-full w-full rounded-xl object-cover"
+                      loading="lazy"
                     />
                   </div>
                 )}

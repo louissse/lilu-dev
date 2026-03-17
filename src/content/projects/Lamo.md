@@ -5,7 +5,7 @@ subtitle: An image-first website built with Astro for a small Trondheim-based ho
 live: "https://lamo-honning.netlify.app/"
 github: ""
 image:
-  url: "/images/lamo.png"
+  src: "../../images/projects/lamo.png"
   alt: "Lamo project screenshot"
 tags: ["Astro", "TypeScript", "Tailwind CSS"]
 ---

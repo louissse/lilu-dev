@@ -5,8 +5,8 @@ subtitle: A Webflow rebuild based on Station’s updated design, focusing on str
 live: "https://station.dk/"
 github: ""
 image:
-  url: "/images/station.png"
-  alt: "Lamo project screenshot"
+  src: "../../images/projects/station.png"
+  alt: "Station project screenshot"
 tags: ["Webflow", "JavaScript"]
 ---
 

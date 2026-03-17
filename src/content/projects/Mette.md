@@ -5,7 +5,7 @@ subtitle: A fast, responsive portfolio site built to replace an outdated legacy 
 live: "https://mettelethan.com/"
 github: ""
 image:
-  url: "/images/mette.png"
+  src: "../../images/projects/mette.png"
   alt: "Mette project screenshot"
 tags: ["Astro", "SanityCMS", "Tailwind"]
 ---

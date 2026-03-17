@@ -5,7 +5,7 @@ subtitle: A mobile-first spell reference designed for quick use during D&D sessi
 live: "https://pocket-spells.vercel.app/"
 github: "https://github.com/louissse/PocketSpells"
 image:
-  url: "/images/pocket-spells.png"
+  src: "../../images/projects/pocket-spells.png"
   alt: "PocketSpells project screenshot"
 tags: ["React", "TypeScript", "TanStack Query"]
 ---

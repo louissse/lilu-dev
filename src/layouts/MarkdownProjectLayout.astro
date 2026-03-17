@@ -3,6 +3,7 @@ import ButtonLink from "../components/ui/ButtonLink.astro";
 import DiagonalDivider from "../components/ui/DiagonalDivider.astro";
 import Layout from "./Layout.astro";
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import { ArrowUpRight } from "@lucide/astro";
 import { MoveLeft } from "@lucide/astro";
 import GithubIcon from "../components/icons/GithubIcon.astro";
@@ -12,7 +13,7 @@ export interface Props {
     title: string;
     subtitle: string;
     image?: {
-      url: string;
+      src: ImageMetadata;
       alt: string;
     };
     tags: string[];
@@ -41,7 +42,7 @@ const { frontmatter } = Astro.props;
           frontmatter.image && (
             <div class="ratio-4/3 mb-2 flex w-full flex-row gap-4">
               <Image
-                src={frontmatter.image.url}
+                src={frontmatter.image.src}
                 alt={frontmatter.image.alt}
                 width={600}
                 height={450}

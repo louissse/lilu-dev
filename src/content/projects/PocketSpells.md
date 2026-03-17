@@ -10,14 +10,18 @@ image:
 tags: ["React", "TypeScript", "TanStack Query"]
 ---
 
-PocketSpells started from a small frustration during tabletop sessions.
+## The Problem
 
-A friend of mine, Amalie, plays D&D as a Ranger and prefers tracking her character on paper. Keeping track of spells, what they do, when to use them, and which ones are available, was always cumbersome.
+PocketSpells started from a real problem during D&D sessions. My friend Amalie needed a way to quickly look up spells mid-game without flipping through books or losing focus. We tried printed cards, but they became outdated fast.
 
-We tried printing spell cards, which helped for a while, but they quickly became outdated and didn’t allow for browsing or filtering. That shaped the idea: build something that keeps the simplicity of paper while allowing fast search and filtering when needed.
+## The Technical Challenge
 
-The scope is intentionally narrow. The goal is simply to browse, read and track spells quickly during a session — nothing more.
+The D&D API has rate limits, I couldn't fetch all spells upfront. I built infinite scroll with pagination (20 spells at a time), caching queries by filter state using TanStack Query. This also solved a tricky problem: if a user clicked multiple filters before a request completed, TanStack Query would wait for the most recent query and discard stale requests.
 
-The app is designed mobile-first, with fast filtering and fuzzy search so players can find spells even if they don’t remember the exact name. Spell data is fetched from an open D&D API and loaded progressively to keep the interface responsive on mobile.
+## User Experience
 
-Spell browsing is currently fully functional. I'm testing "prepared spells" functionality. Planned next steps include spell slot tracking and offline support.
+For the UI, I added a splash screen on initial load to hide the first fetch, and skeleton loaders when filtering, so users always know something's happening.
+
+## Today
+
+The app is live and being actively used by our D&D table. I'm developing new features based on what we find missing mid-session.

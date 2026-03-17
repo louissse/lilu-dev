@@ -109,8 +109,17 @@
   }
 }
 
-@layer components {
-  .container {
-    @apply container mx-auto px-4 sm:px-6 lg:px-16;
+@utility container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1100px;
+  padding-inline: 1rem;
+
+  @media (width >= 640px) {
+    padding-inline: 1.5rem;
+  }
+
+  @media (width >= 1024px) {
+    padding-inline: 4rem;
   }
 }

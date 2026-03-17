@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 4
 title: Website for a local honey producer
 subtitle: An image-first website built with Astro for a small Trondheim-based honey producer, designed to foreground photography while keeping the frontend lightweight and easy to extend.
 live: "https://lamo-honning.netlify.app/"

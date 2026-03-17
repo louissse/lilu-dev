@@ -1,7 +1,7 @@
 ---
-order: 4
+order: 3
 title: Station website rebuild
-subtitle: A Webflow rebuild based on Station’s updated design, focusing on structure, clarity, and a setup their team could maintain themselves.
+subtitle: A Webflow rebuild based on Station's updated design, focusing on structure, clarity, and a setup their team could maintain themselves.
 live: "https://station.dk/"
 github: ""
 image:
@@ -10,10 +10,24 @@ image:
 tags: ["Webflow", "JavaScript"]
 ---
 
-Station wanted a clearer and more structured website to present their activities, programs, and student communities. They had developed a new design direction, and my role was to translate it into a maintainable Webflow build.
+## The situation
 
-The work focused on turning the design into a consistent set of components and content patterns, while refining the site structure and navigation so information was easier to browse.
+Station is an open student and innovation platform in Denmark. They wanted a refreshed website that presented their activities, programs, and student communities more clearly, and they already had a new design direction ready. My role was to translate it into a solid Webflow build.
 
-A key priority was making the site easy for Station’s team to maintain without external help. The final setup uses reusable components and structured CMS collections, giving them a predictable workflow for adding and updating content.
+## Why Webflow, and why stay in it
 
-The site is now live and maintained by Station’s internal team.
+Webflow was their existing platform. They were having some frustrations with it and had started considering a switch. After looking at their situation, I recommended staying: the core platform wasn't the problem, and switching would introduce new complexity without solving what was actually bothering them. The better path was to fix the underlying issues and make the system work properly for their team.
+
+## The real problem
+
+The frustration came down to Webflow's class inheritance. When their team tried to make small design changes, like adjusting a text colour, they couldn't predict what else might change on the site. It made them hesitant to touch anything.
+
+The fix was structural: I created a set of dedicated utility classes (for colours and other design properties) based on their design manual. These could be applied to individual elements without triggering unintended changes elsewhere. Combined with a reusable component system and structured CMS collections, the site became predictable to work with.
+
+## Handing it over properly
+
+A clean build isn't enough if the team can't use it confidently. I put together a Notion site with video walkthroughs explaining how to update and maintain the site, covering the patterns that might otherwise be confusing, and written to stay useful as team members change over time.
+
+## Today
+
+The site is live. Station's internal team maintains it themselves.

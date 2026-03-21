@@ -36,4 +36,4 @@ If you want to learn, write down what you understood afterward. Even just a few 
 
 And one more thing: learning is uncomfortable. It’s frustrating.
 
-If what you’re doing feels easy, smooth, and kind of nice… you’re probably not learning that much.
+If what you’re doing feels easy, smooth, and kind of nice… you’re probably not learning much.

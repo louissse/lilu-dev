@@ -5,13 +5,14 @@ import { Image } from "astro:assets";
 
 const allNotes = await getCollection("notes");
 const sortedNotes = allNotes.sort(
-  (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
+  (a, b) =>
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
 );
 ---
 
 <Layout
-  title="Notes"
-  description="Thoughts, insights, and learnings from my journey in technology and design."
+  title="lilu.dev | Notes"
+  description="Thoughts, insights, and reflections on learning, building, and working with technology."
   bgClass="bg-orange-50"
 >
   <section class="py-22">

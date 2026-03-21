@@ -5,6 +5,8 @@ interface Props {
   variant?: "primary" | "secondary" | "text";
   external?: boolean;
   iconPosition?: "left" | "right";
+  class?: string;
+  textSize?: string;
   [key: string]: unknown;
 }
 
@@ -14,6 +16,8 @@ const {
   variant = "primary",
   external = false,
   iconPosition = "right",
+  class: additionalClasses,
+  textSize = "text-xl",
   ...rest
 } = Astro.props;
 
@@ -21,12 +25,13 @@ const baseStyles =
   "inline-flex items-center transition-colors focus:outline-none";
 
 const variants = {
-  secondary: "gap-2 text-xl font-bold text-red-600 hover:underline",
-  primary: "gap-2 text-xl font-bold text-contrastblue hover:underline",
-  text: "gap-2 text-xl font-bold text-contrastblue hover:underline",
+  secondary: "gap-2 font-bold text-red-600 hover:underline",
+  primary: "gap-2 font-bold text-contrastblue hover:underline",
+  text: "gap-2 font-bold text-contrastblue hover:underline",
 };
 
-const linkClasses = `${baseStyles} ${variants[variant]}`;
+const linkClasses =
+  `${baseStyles} ${variants[variant]} ${textSize} ${additionalClasses || ""}`.trim();
 const linkProps = external
   ? {
       target: "_blank",

@@ -1,7 +1,7 @@
 ---
 order: 1
-title: PocketSpells, a modern spell tracking app
-subtitle: A mobile-first spell reference designed for quick use during D&D sessions.
+title: PocketSpells, spell tracker for D&D
+subtitle: A mobile-first React app for searching, filtering, and managing spells during D&D gameplay
 live: "https://pocket-spells.vercel.app/"
 github: "https://github.com/louissse/PocketSpells"
 image:
@@ -10,18 +10,40 @@ image:
 tags: ["React", "TypeScript", "TanStack Query"]
 ---
 
-## The Problem
+## Overview
 
-PocketSpells started from a real problem during D&D sessions. My friend Amalie needed a way to quickly look up spells mid-game without flipping through books or losing focus. We tried printed cards, but they became outdated fast.
+PocketSpells is a mobile-first React app for managing spells during D&D gameplay.
 
-## The Technical Challenge
+Looking up spells mid-session is slow and interrupts flow. The goal of the app is to provide fast search, filtering, and a personal spell collection that can be accessed instantly during play.
 
-The D&D API has rate limits, I couldn't fetch all spells upfront. I built infinite scroll with pagination (20 spells at a time), caching queries by filter state using TanStack Query. This also solved a tricky problem: if a user clicked multiple filters before a request completed, TanStack Query would wait for the most recent query and discard stale requests.
+## Key Features
+
+- Fast search and filtering of spells from an external API
+- Personal “pocket” with locally persisted spells
+- Ability to add custom spells not available in the API
+- Optimized for quick interaction during gameplay
+
+## Technical Approach
+
+The app uses the D&D 5e API, which has rate limits, so fetching all spells upfront was not feasible.
+
+To handle this, I implemented:
+
+- Infinite scroll with paginated requests (20 spells at a time)
+- Query caching based on filter state using **TanStack Query**
+- Automatic handling of race conditions, ensuring only the latest query result is applied
+
+This makes filtering responsive and avoids inconsistent UI state when users interact quickly.
 
 ## User Experience
 
-For the UI, I added a splash screen on initial load to hide the first fetch, and skeleton loaders when filtering, so users always know something's happening.
+The app is designed for use during live sessions, where speed and clarity are critical.
 
-## Today
+- A splash screen hides the initial data load
+- Skeleton loaders provide feedback during filtering
+- The interface is optimized for mobile use and quick interactions
 
-The app is live and being actively used by our D&D table. I'm developing new features based on what we find missing mid-session.
+## Current Status
+
+The app is live and actively used during D&D sessions.  
+New features are continuously added based on real usage and feedback during gameplay.

@@ -1,7 +1,7 @@
 ---
 order: 2
-title: Portfolio website for musician Mette Lethan
-subtitle: A fast, responsive portfolio site built to replace an outdated legacy website and make it easy to publish new projects and teaching work.
+title: Mette Lethan, musician portfolio
+subtitle: A fast, maintainable portfolio built with Astro and Sanity, enabling independent publishing of music and teaching work
 live: "https://mettelethan.com/"
 github: ""
 image:
@@ -10,20 +10,43 @@ image:
 tags: ["Astro", "SanityCMS", "Tailwind"]
 ---
 
-## The problem
+## Overview
 
-Mette Lethan is a musician and teacher. Her old website was built on a legacy framework that hadn't been updated in years, wasn't responsive, and couldn't be maintained without a developer in the loop for every small change. She needed something different: a site she could own without being dependent on a tech company or a WordPress plugin ecosystem that would eventually demand attention.
+A portfolio website for musician and teacher Mette Lethan, built to replace an outdated legacy site and give her full control over her content.
 
-## The stack
+The goal was to create a fast, maintainable site where new projects could be added without developer involvement.
 
-Astro was an easy choice. I had experience with it and it produces fast, lean sites without a lot of ongoing complexity. For content management, we needed something that would let Mette add new projects herself over time, across different categories (music, teaching, collaborations). Sanity CMS fit that well: structured, flexible, and not tied to any particular hosting platform.
+## The Problem
 
-## The challenge
+The previous site was built on a legacy framework, was not responsive, and required developer support for even small updates.
 
-The hardest part wasn't technical, it was design. Mette had a clear vision for how she wanted her work to be presented, but that vision didn't map neatly onto a content model flexible enough to handle many different project types. We went back and forth quite a bit. What we landed on was a category-based system: projects live in categories that control which page they appear on, giving her a consistent way to add new work without it becoming unpredictable.
+This created friction in maintaining an up-to-date portfolio and limited Mette’s ability to share new work independently.
 
-One page also has a custom music player, built in Vanilla JavaScript, so her music plays natively on the site rather than linking out to a streaming platform. Adding new tracks isn't in the CMS yet (it was outside the original scope), but the player itself works well and it was the right call to build it quickly rather than not have it at all.
+## Solution
 
-## Today
+The new site focuses on:
 
-The site is live and Mette is using it as her main online presence, adding projects on her own.
+- Fast performance and simple deployment
+- A flexible content structure for different types of work
+- Independent content management without technical overhead
+
+Projects are organised into categories (music, teaching, collaborations), providing a consistent and predictable way to add new content over time.
+
+## Technical Approach
+
+- Built with **Astro** for fast, static rendering and low complexity
+- Integrated with **Sanity CMS** for structured, flexible content management
+- Styled with **Tailwind CSS**
+
+A custom music player was implemented in vanilla JavaScript, allowing playback directly on the site instead of relying on external platforms.
+
+## Challenges
+
+The main challenge was translating Mette’s visual and structural ideas into a content model that remained flexible over time.
+
+We iterated on several approaches before landing on a category-based system that balances flexibility with consistency.
+
+## Current Status
+
+The site is live and used as Mette’s primary online presence.  
+She is able to add and manage content independently without developer support.

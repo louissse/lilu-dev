@@ -1,7 +1,7 @@
 ---
 order: 4
-title: lilu digital, my own agency site
-subtitle: The site I built to mark my return to frontend work, designed with care and animated with GSAP.
+title: lilu digital, agency website
+subtitle: A high-performance marketing site built with Astro, focused on design, motion, and clarity
 live: "https://liludigital.dk/"
 github: ""
 image:
@@ -10,18 +10,30 @@ image:
 tags: ["Astro", "GSAP", "TypeScript", "Tailwind"]
 ---
 
-## The starting point
+## Overview
 
-When I decided to return to hands-on frontend work, building my own agency site was the first real commitment. It wasn't just a portfolio piece — it was a way of saying: this is what I do now.
+A personal agency website built to mark my return to hands-on frontend work.
 
-## Learning Astro by doing
+The goal was to create a fast, carefully designed marketing site that reflects how I think about structure, motion, and user experience.
 
-I chose Astro because I wanted to learn it properly, and building something real is the only way I know how to do that. A marketing site with no CMS needs and high performance requirements is close to the ideal Astro use case, so it made sense to start there.
+## Context
 
-## Design and animation
+This project was both a portfolio piece and a real product. It needed to communicate clearly, feel intentional, and perform well, while also serving as a foundation for client work.
 
-I spent a lot of time on the design. I wanted the site to feel considered and a little bit bold — not just a clean template. To get there I used GSAP for animations, which let me add motion that felt intentional rather than decorative.
+## Technical Approach
 
-## Today
+- Built with **Astro** for fast, static rendering and minimal complexity
+- Styled with **Tailwind CSS**
+- Animations implemented using **GSAP**, focusing on purposeful motion rather than decorative effects
 
-The site is live and actively attracting clients.
+Astro was chosen for its simplicity and performance, making it well suited for a marketing site without CMS requirements.
+
+## Design and Interaction
+
+The design process focused on creating a site that feels considered and slightly bold, without relying on templates.
+
+Animations are used to support the structure and flow of the page, guiding attention and reinforcing hierarchy rather than acting as standalone effects.
+
+## Outcome
+
+The site is live and used as my primary online presence, attracting clients and serving as a foundation for my frontend work.

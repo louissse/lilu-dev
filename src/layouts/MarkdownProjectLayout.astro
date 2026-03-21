@@ -43,7 +43,7 @@ const ogImage = frontmatter.image
         <!-- Project Image -->
         {
           frontmatter.image && (
-            <div class="ratio-4/3 mb-2 flex w-full flex-row gap-4">
+            <div class="ratio-4/3 mb-2 flex w-full flex-col gap-4 sm:flex-row">
               <Image
                 src={frontmatter.image.src}
                 src={frontmatter.image.src}
@@ -52,9 +52,9 @@ const ogImage = frontmatter.image
                 height={450}
                 format="webp"
                 loading="lazy"
-                class="w-2/3 rounded-lg"
+                class="w-full rounded-lg sm:w-2/3"
               />
-              <div class="mb-8 flex flex-col">
+              <div class="flex flex-row gap-4 sm:mb-8 sm:flex-col sm:gap-2">
                 {frontmatter.tags.map((tag: string) => (
                   <span class="text-lg font-medium text-red-600">{tag}</span>
                 ))}
@@ -66,7 +66,7 @@ const ogImage = frontmatter.image
         <!-- Tags -->
 
         <!-- Action Buttons -->
-        <div class="mb-8 flex gap-8">
+        <div class="mb-8 flex flex-col gap-2 sm:flex-row sm:gap-8">
           {
             frontmatter.live && (
               <ButtonLink
@@ -74,6 +74,7 @@ const ogImage = frontmatter.image
                 target="_blank"
                 text="View Live Project"
                 variant="text"
+                textSize="text-base sm:text-xl"
                 rel="noopener noreferrer"
               >
                 <ArrowUpRight class="h-5 w-5" />
@@ -87,7 +88,7 @@ const ogImage = frontmatter.image
                 target="_blank"
                 text="View Source Code"
                 variant="text"
-                rel="noopener noreferrer"
+                textSize="text-base sm:text-xl"
               >
                 <GithubIcon class="h-5 w-5" />
               </ButtonLink>
@@ -98,7 +99,7 @@ const ogImage = frontmatter.image
 
       <!-- Project Content -->
       <div
-        class="prose prose-lg font-albert prose-headings:text-gray-950 prose-headings:font-semibold prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8 prose-h2:text-2xl prose-h2:mb-2 prose-h2:mt-8 prose-h2:text-blue-900 prose-h3:text-xl prose-h3:mb-3 prose-h3:mt-6 prose-h3:text-blue-800 prose-p:text-gray-950 prose-p:leading-relaxed prose-p:mb-4 prose-a:text-blue-700 prose-a:no-underline prose-a:font-medium prose-a:hover:underline prose-a:hover:text-blue-900 prose-strong:text-gray-950 prose-strong:font-semibold prose-em:text-red-700 prose-em:italic prose-ul:my-4 prose-li:my-1 prose-li:text-gray-950 prose-ol:my-4 prose-ol:text-gray-950 prose-blockquote:border-l-4 prose-blockquote:border-orange-300 prose-blockquote:bg-orange-50 prose-blockquote:p-4 prose-blockquote:my-6 prose-blockquote:text-red-700 prose-blockquote:italic prose-code:text-blue-800 prose-code:bg-orange-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:font-mono prose-code:text-sm prose-pre:bg-blue-50 prose-pre:border prose-pre:border-blue-200 prose-pre:p-4 prose-pre:rounded-lg mb-6 max-w-none"
+        class="prose font-albert prose-headings:text-gray-950 prose-headings:font-semibold prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8 prose-h2:text-2xl prose-h2:mb-2 prose-h2:mt-8 prose-h2:text-blue-900 prose-h3:text-xl prose-h3:mb-3 prose-h3:mt-6 prose-h3:text-blue-800 prose-p:text-gray-950 prose-p:leading-relaxed prose-p:mb-4 prose-a:text-blue-700 prose-a:no-underline prose-a:font-medium prose-a:hover:underline prose-a:hover:text-blue-900 prose-strong:text-gray-950 prose-strong:font-semibold prose-em:text-red-700 prose-em:italic prose-ul:my-4 prose-li:my-1 prose-li:text-gray-950 prose-ol:my-4 prose-ol:text-gray-950 prose-blockquote:border-l-4 prose-blockquote:border-orange-300 prose-blockquote:bg-orange-50 prose-blockquote:p-4 prose-blockquote:my-6 prose-blockquote:text-red-700 prose-blockquote:italic prose-code:text-blue-800 prose-code:bg-orange-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:font-mono prose-code:text-sm prose-pre:bg-blue-50 prose-pre:border prose-pre:border-blue-200 prose-pre:p-4 prose-pre:rounded-lg mb-6 max-w-none"
       >
         <slot />
       </div>

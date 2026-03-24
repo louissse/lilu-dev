@@ -14,36 +14,21 @@ tags: ["React", "TypeScript", "TanStack Query"]
 
 PocketSpells is a mobile-first React app for managing spells during D&D gameplay.
 
-Looking up spells mid-session is slow and interrupts flow. The goal of the app is to provide fast search, filtering, and a personal spell collection that can be accessed instantly during play.
+It was built to solve a real problem: looking up spells mid-session is slow and breaks flow. The app focuses on fast search, filtering, and a personal spell collection that can be accessed instantly during play.
 
 ## Key Features
 
-- Fast search and filtering of spells from an external API
-- Personal “pocket” with locally persisted spells
-- Ability to add custom spells not available in the API
-- Optimized for quick interaction during gameplay
+- Search and filter spells from an external API
+- Personal “pocket” with locally stored spells
+- Add custom spells
+- Track spell slots during gameplay
 
-## Technical Approach
+## Technical Highlights
 
-The app uses the D&D 5e API, which has rate limits, so fetching all spells upfront was not feasible.
+- Designed around API rate limits using paginated requests and caching
+- Implemented with **TanStack Query** to handle async state and avoid unnecessary requests
+- Handles rapid user input without inconsistent UI state
 
-To handle this, I implemented:
+## Focus
 
-- Infinite scroll with paginated requests (20 spells at a time)
-- Query caching based on filter state using **TanStack Query**
-- Automatic handling of race conditions, ensuring only the latest query result is applied
-
-This makes filtering responsive and avoids inconsistent UI state when users interact quickly.
-
-## User Experience
-
-The app is designed for use during live sessions, where speed and clarity are critical.
-
-- A splash screen hides the initial data load
-- Skeleton loaders provide feedback during filtering
-- The interface is optimized for mobile use and quick interactions
-
-## Current Status
-
-The app is live and actively used during D&D sessions.  
-New features are continuously added based on real usage and feedback during gameplay.
+Mobile-first design with fast interactions, optimized for real-time use during gameplay.

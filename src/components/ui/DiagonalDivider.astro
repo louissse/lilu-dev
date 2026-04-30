@@ -5,11 +5,7 @@ interface Props {
   [key: string]: unknown;
 }
 
-const {
-  class: className = "",
-  variant = "red",
-  ...rest
-} = Astro.props;
+const { class: className = "", variant = "red", ...rest } = Astro.props;
 
 const variants = {
   red: "rgba(220,38,38,0.3)",
@@ -18,11 +14,126 @@ const variants = {
 };
 
 const stripeColor = variants[variant] || variants.blue;
+
+// Generate unique ID for this component instance
+const componentId = `diagonal-divider-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
 <div
-  class={`h-[10px] w-full ${className}`}
-  style={`background-image: repeating-linear-gradient(-45deg, transparent, transparent 2px, ${stripeColor} 2px, ${stripeColor} 4px);`}
-  {...rest}
+  id={componentId}
+  class={`wrapper ${className}`}
+  data-stripe-color={stripeColor}
 >
 </div>
+
+<style>
+  .wrapper {
+    position: relative;
+    height: 40px;
+    overflow: hidden;
+    cursor:
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="overflow: visible;"><g transform="rotate(35 12 12)"><rect x="8" y="2" width="8" height="18" rx="2" fill="%23efe0b1" stroke="%23293951" stroke-width="1.5"/><rect x="8" y="14" width="8" height="6" rx="2" fill="%23f17a7a" stroke="%23293951" stroke-width="1.5"/></g></svg>')
+        12 20,
+      auto;
+  }
+</style>
+
+<style is:global>
+  .diagonal-line {
+    position: absolute;
+    height: 20px;
+    transform: translateY(-50%) skew(-25deg);
+    user-select: none;
+    pointer-events: none;
+    filter: blur(var(--blur, 0));
+    transition: filter 200ms;
+  }
+</style>
+
+<script define:vars={{ componentId, stripeColor }}>
+  // Simple utility functions (no external imports needed)
+  const random = (min, max) => Math.random() * (max - min) + min;
+  const range = (count) => Array.from({ length: count }, (_, i) => i);
+
+  function initializeSingleDivider(id, backgroundColor) {
+    const LINE_OFFSET = 20;
+    const LINE_SPACING = 10; // pixels between each line
+    const LINE_WIDTH = 4; // width of each line in pixels
+    const BUFFER = 20; // buffer to account for skew and random positioning
+
+    const wrapper = document.getElementById(id);
+    if (!wrapper) {
+      console.warn(`DiagonalDivider wrapper not found: ${id}`);
+      return;
+    }
+
+    // Calculate number of lines based on container width
+    const containerWidth = wrapper.clientWidth;
+    const NUMBER_OF_LINES = Math.floor(
+      (containerWidth - BUFFER) / LINE_SPACING,
+    );
+
+    console.log(
+      `Initializing DiagonalDivider: ${id} with color: ${backgroundColor}`,
+    );
+    console.log(
+      `Container width: ${containerWidth}px, calculated lines: ${NUMBER_OF_LINES}`,
+    );
+
+    const lines = [];
+
+    // Clear existing lines
+    wrapper.innerHTML = "";
+
+    range(NUMBER_OF_LINES).forEach((index) => {
+      const line = document.createElement("div");
+      line.classList.add("diagonal-line");
+      line.style.backgroundColor = backgroundColor;
+
+      const posX = LINE_SPACING + index * LINE_SPACING + random(-1, 1);
+      const posY = wrapper.clientHeight / 2 + random(-1, 1);
+
+      line.style.left = posX + "px";
+      line.style.top = posY + "px";
+      line.style.width = LINE_WIDTH + "px";
+
+      wrapper.appendChild(line);
+      lines.push(line);
+    });
+
+    wrapper.addEventListener("pointermove", (event) => {
+      lines.forEach((line) => {
+        const x = event.offsetX;
+        const y = event.offsetY;
+        const lineTop = line.offsetTop;
+        const lineLeft = line.offsetLeft;
+        const lineHeight = line.offsetHeight;
+        const lineWidth = line.offsetWidth;
+
+        if (
+          x - (lineLeft - (lineWidth + LINE_OFFSET)) > 0 &&
+          lineLeft + LINE_OFFSET + lineWidth - x > 0 &&
+          y - (lineTop - (lineHeight + LINE_OFFSET)) > 0 &&
+          lineTop + LINE_OFFSET + lineHeight - y > 0
+        ) {
+          const filterStyle = window.getComputedStyle(line).filter;
+          const blurMatch = filterStyle.match(/blur\(([^)]+)\)/);
+          const blurValue = blurMatch ? parseFloat(blurMatch[1]) : 0;
+          const newBlurValue = blurValue + 0.2;
+          line.style.setProperty("--blur", newBlurValue + "px");
+        }
+      });
+    });
+
+    console.log(`DiagonalDivider ${id} initialized with ${lines.length} lines`);
+  }
+
+  // Initialize this specific component
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      initializeSingleDivider(componentId, stripeColor);
+    });
+  } else {
+    initializeSingleDivider(componentId, stripeColor);
+  }
+</script>

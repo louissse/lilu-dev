@@ -100,8 +100,25 @@ const componentId = `diagonal-divider-${Math.random().toString(36).substr(2, 9)}
       wrapper.appendChild(line);
       lines.push(line);
     });
+    let isPointerDown = false;
+
+    wrapper.addEventListener("pointerdown", () => {
+      isPointerDown = true;
+    });
+
+    wrapper.addEventListener("pointerup", () => {
+      isPointerDown = false;
+    });
+
+    wrapper.addEventListener("pointerleave", () => {
+      isPointerDown = false;
+    });
+    wrapper.addEventListener("touchmove", (event) => {
+      event.preventDefault();
+    });
 
     wrapper.addEventListener("pointermove", (event) => {
+      if (!isPointerDown) return;
       lines.forEach((line) => {
         const x = event.offsetX;
         const y = event.offsetY;

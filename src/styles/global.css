@@ -105,7 +105,7 @@
 
   a,
   .a {
-    @apply cursor-pointer text-gray-950 underline-offset-4 transition-colors duration-200 hover:text-blue-800 hover:underline;
+    @apply cursor-pointer text-gray-950 decoration-blue-600 underline-offset-4 transition-colors duration-200 hover:underline;
   }
 }
 

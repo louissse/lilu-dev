@@ -81,17 +81,13 @@ const featuredProjects = sortedProjects.slice(0, 2);
                     />
                   </div>
                 )}
-                <div class="mb-1 flex flex-wrap gap-4">
-                  {project.data.tags.map((tag: string) => (
-                    <span class="text-lg font-medium text-red-600">{tag}</span>
-                  ))}
-                </div>
                 <div class="">
                   <h3 class="mb-2 text-2xl font-semibold">
                     <a href={`/projects/${project.id}/`}>
                       {project.data.title}
                     </a>
                   </h3>
+                  <p>{project.data.subtitle}</p>
                 </div>
               </div>
             );

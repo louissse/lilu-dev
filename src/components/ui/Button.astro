@@ -9,7 +9,7 @@ interface Props {
 const { text, href = "#", variant = "primary", ...rest } = Astro.props;
 
 const baseStyles =
-  "inline-flex items-center no-underline justify-center px-5 py-2 text-lg font-medium rounded-[25px] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2";
+  "inline-flex items-center no-underline justify-center px-5 py-2 text-lg font-medium rounded-[25px] hover:transition-background hover:duration-200 transition-background duration-500 focus:outline-none focus:ring-2 focus:ring-offset-2";
 
 const variants = {
   primary: "bg-red-600 text-orange-50 hover:bg-red-700 focus:ring-blue-500",

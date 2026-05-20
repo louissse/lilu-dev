@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ButtonNew from "../components/ui/ButtonNew.astro";
 import Button from "../components/ui/Button.astro";
 import ButtonLink from "../components/ui/ButtonLink.astro";
 import { ArrowUpRight } from "@lucide/astro";
@@ -28,10 +29,10 @@ const featuredProjects = sortedProjects.slice(0, 2);
         genuinely friendly to people.
       </p>
       <div class="mb-10 flex flex-wrap gap-4 md:mb-22">
-        <Button text="View projects" href="#projects" />
-        <Button
+        <ButtonNew text="View projects" href="#projects" />
+        <ButtonNew
           text="Contact me"
-          variant="outline"
+          variant="secondary"
           href="mailto:louise@liludigital.dk"
         />
       </div>

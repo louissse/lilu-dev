@@ -6,6 +6,7 @@ import { Image, getImage } from "astro:assets";
 import { ArrowUpRight } from "@lucide/astro";
 import { MoveLeft } from "@lucide/astro";
 import GithubIcon from "../components/icons/GithubIcon.astro";
+import InternalLinkBackwards from "../components/ui/InternalLinkBackwards.astro";
 
 export interface Props {
   frontmatter: {
@@ -112,14 +113,7 @@ const ogImage = frontmatter.image
 
       <!-- Back to Projects -->
       <div class="mt-12 flex items-center gap-4">
-        <ButtonLink
-          href="/projects"
-          variant="secondary"
-          text="Back to all projects"
-          iconPosition="left"
-        >
-          <MoveLeft class="h-5 w-5" />
-        </ButtonLink>
+        <InternalLinkBackwards href="/projects" text="Back to all projects" />
       </div>
     </div>
   </article>

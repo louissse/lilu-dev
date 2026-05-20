@@ -19,6 +19,37 @@
   font-style: italic;
   font-display: swap;
 }
+html {
+  --spring-easing: linear(
+    0,
+    0.009,
+    0.036 1.6%,
+    0.148 3.5%,
+    0.757 10.1%,
+    0.979 13%,
+    1.06,
+    1.121,
+    1.163,
+    1.187 18.9%,
+    1.194,
+    1.195,
+    1.19,
+    1.181 22.8%,
+    1.151 24.9%,
+    1.054 30.2%,
+    1.011 32.9%,
+    0.979 35.9%,
+    0.97,
+    0.964 39.1%,
+    0.962,
+    0.965 43.2%,
+    0.997 53.1%,
+    1.007 59.1% 63.6%,
+    0.999 78.8%,
+    1
+  );
+  --spring-duration: 1s;
+}
 
 @theme {
   --font-albert: "Albert Sans", sans-serif;
@@ -72,6 +103,8 @@
   --color-red-900: #991b1b;
 
   --color-contrastblue: #196dff;
+
+  --shadow-link: 0 1.5px 0 var(--color-contrastblue);
 }
 
 @layer base {

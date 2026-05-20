@@ -1,0 +1,51 @@
+---
+interface Props {
+  text: string;
+  href?: string;
+}
+
+const { text = "", href = "#" } = Astro.props;
+---
+
+<a
+  class="link inline-flex items-center gap-1 text-xl font-bold text-red-600 hover:text-blue-800 hover:no-underline"
+  href={href}
+  >{text}
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="arrow"
+    aria-hidden="true"
+  >
+    <path class="shaft" d="M 5 12
+               h 14"></path>
+    <path class="tip" d="m 12 5 
+             l 7 7 
+             l -7 7"></path>
+  </svg>
+</a>
+<style>
+  .shaft,
+  .tip {
+    transition: d var(--spring-easing) var(--spring-duration);
+  }
+  .link:hover .shaft {
+    d: path("\
+      M 5,12\
+      h 17\
+    ");
+  }
+  .link:hover .tip {
+    d: path("\
+      M 15,7\
+      l 7,5\
+      l -7,5\
+    ");
+  }
+</style>

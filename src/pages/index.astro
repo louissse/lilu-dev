@@ -11,6 +11,7 @@ import { Image } from "astro:assets";
 import HeroImage from "../images/hero-image.jpg";
 import ProfileImage from "../images/profile.png";
 import { getCollection } from "astro:content";
+import InternalLink from "../components/ui/InternalLink.astro";
 
 // Get the first two projects
 const allProjects = await getCollection("projects");
@@ -95,9 +96,7 @@ const featuredProjects = sortedProjects.slice(0, 2);
           })
         }
       </div>
-      <ButtonLink href="/projects" text="See all projects" variant="secondary">
-        <MoveRight class="h-5 w-5" />
-      </ButtonLink>
+      <InternalLink href="/projects" text="See all projects" />
     </div>
   </section>
   <div class="container">

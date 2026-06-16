@@ -1,0 +1,76 @@
+---
+order: 1
+title: PocketSpells, spell tracker for D&D
+subtitle: A mobile-first React app for searching, filtering, and managing spells during D&D gameplay
+live: "https://pocket-spells.vercel.app/"
+github: "https://github.com/louissse/PocketSpells"
+image:
+  src: "../../images/projects/pocket-spells.png"
+  alt: "PocketSpells project screenshot"
+tags: ["React", "TypeScript", "TanStack Query"]
+---
+
+import { Image } from "astro:assets";
+import pocketScreens from "../../images/projects/pocket-screens.jpg";
+import tanstackQuery from "../../images/projects/pocket-tanstack.png";
+
+## The problem - and the solution
+
+PocketSpells is a mobile-first React app for managing spells during D&D gameplay. It was initially built to help a friend keep track of her spells as an alternative to using printed cards.
+
+I build and designed this app from scratch.
+
+### Core features
+
+- Search and filter spells from an external API
+- Personal "pocket" with locally stored spells
+- Add custom spells
+- Track spell slots during gameplay
+
+### Defining the Core Features
+
+My friend wanted to primarily keep track of her character with pen and paper, but she had a hard time with that when it came to spells. With only the printed cards, she had nowhere to look up new spells during a session.
+
+The solution was to create an app that would feel just as easy to use as pen and paper, while providing access to all the relevant spells and information. After testing the app during actual gameplay, we decided to add features for tracking spell slots as well.
+
+With this change, the app now has three screens: Spells, Pocket, and Track.
+
+<div class="flex justify-center">
+  <Image
+    src={pocketScreens}
+    alt="Screenshots of the three screens in PocketSpells"
+    width={600}
+  />
+</div>
+
+## Learning when to use the right tool
+
+Initially, I used TanStack Query for most of my data fetching, but I kept one request as a regular fetch outside of TanStack Query. At the time, I thought the request was simple enough that I didn't need caching or any additional abstraction.
+
+<div class="md:flex md:flex-row-reverse md:gap-4 md:items-start">
+  <div class="flex shrink-0 justify-center">
+    <Image class="rounded-lg" src={tanstackQuery} alt="TanstackQuery logo" width={300} />
+  </div>
+  <div>
+    I quickly learned otherwise. During testing, I noticed race conditions when
+    users interacted with the app rapidly. Because the request was managed
+    separately, it became harder to keep the data in sync with the current UI state.
+
+    To solve this, I rewrote the fetch using TanStack Query. This allowed me to take advantage of query keys and let TanStack handle request state consistently across the application, making the behavior much more predictable.
+
+  </div>
+</div>
+
+## Saving data without a hassle
+
+For this project, I did not want to go through the hassle of setting up a backend, so I decided to use local storage to save the user’s pocket and spell slot data. It was a great fit for this project, because it let me quickly add persistent storage without having to manage a server or database.
+
+The API I used for fetching spells only includes the official D&D 5e spells that are available to use without copyright issues. That created a limitation, since we wanted to support all D&D spells as well as homebrew spells. To solve this, I added a feature that lets users create their own custom spells. The challenge was building a fairly advanced form in a way that still felt simple for the user.
+
+## Keeping the game going
+
+As anyone who plays D&D knows, it can be difficult to keep a campaign going over time. Kids, work, and other grown-up responsibilities tend to get in the way. Despite that, the app is still being used during our sessions.
+
+There are still a few smaller features I would like to add, such as spell tagging to make spells easier to organize. After that, I hope to get more people to test the app and provide feedback.
+
+At our table, the app has been a huge help, and I hope it can be just as useful for others.

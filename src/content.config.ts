@@ -1,10 +1,14 @@
 // Import the glob loader
 import { glob } from "astro/loaders";
 // Import utilities from `astro:content`
-import { z, defineCollection } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 // Define a `loader` and `schema` for each collection
 const projectsCollection = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/projects" }),
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/projects",
+  }),
   schema: ({ image }) =>
     z.object({
       order: z.number(),

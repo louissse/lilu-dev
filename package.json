@@ -14,9 +14,9 @@
     "@astrojs/sitemap": "^3.7.3",
     "@lucide/astro": "^1.18.0",
     "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.1.11",
+    "@tailwindcss/vite": "^4.3.1",
     "astro": "^6.4.7",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
     "prettier": "3.6.2",
